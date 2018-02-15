@@ -71,9 +71,9 @@ function drawScene() {
 }
 
 function createObject() {
-    var o = new Sphere(gl, 1, 4);
-    allObjs.push(o);
-/*  var r;
+/*    var o = new Sphere(gl, 1, 4);
+    allObjs.push(o);*/
+  var r;
   var o;
   for (let i = 0; i < 10; i ++) {
     for (let j = 0; j < 10; j++) {
@@ -96,7 +96,7 @@ function createObject() {
       mat4.translate (o.coordFrame, o.coordFrame, vec3.fromValues(i-5, j-5, 0));
       allObjs.push(o);
     }
-  }*/
+  }
 /*  let obj = new PolygonalPrism(gl,
       {
         topRadius: 0.5,
