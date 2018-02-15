@@ -6,8 +6,8 @@ class Sphere extends Object3D {
    * Create a 3D sphere with tip at the Z+ axis and base on the XY plane
    * @param {Object} gl      the current WebGL context
    * @param {Number} radius  radius of the sphere
-   * @param {Number} subDiv number of recursive subdivisions
-   * @param {vec3}   [col1]    color #1 to use
+   * @param {Number} subDiv  number of recursive subdivisions
+   * @param {vec3}   [col1]  color #1 to use
    */
   constructor (gl, RADIUS, subDiv, col1) {
     super(gl);
@@ -29,5 +29,7 @@ class Sphere extends Object3D {
     vec3.scale (seedD, seedD, RADIUS);
 
     /* TODO: complete the rest of the code here */
+
+
   }
 }

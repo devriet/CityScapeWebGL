@@ -1,7 +1,7 @@
 /**
  * Created by Hans Dulimarta.
  */
-let canvas
+let canvas;
 let gl;
 let allObjs = [];
 
@@ -17,7 +17,6 @@ function main() {
   gl = WebGLUtils.create3DContext(canvas, null);
   ShaderUtils.loadFromFile(gl, "vshader.glsl", "fshader.glsl")
   .then (prog => {
-
     /* put all one-time initialization logic here */
     gl.useProgram (prog);
     gl.clearColor (0, 0, 0, 1);
@@ -65,7 +64,7 @@ function drawScene() {
   gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
 
   /* in the following three cases we rotate the coordinate frame by 1 degree */
-  for (var k = 0; allObjs.length; k++)
+  for (var k = 0; k < allObjs.length; k++)
     allObjs[k].draw(gl);
 
 }
