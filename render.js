@@ -9,6 +9,7 @@ var projUnif;
 var projMat, viewMat;
 
 function main() {
+  setupEventHandlers();
   canvas = document.getElementById("my-canvas");
 
   /* setup window resize listener */
@@ -70,7 +71,33 @@ function drawScene() {
 }
 
 function createObject() {
-  let obj = new PolygonalPrism(gl,
+    var o = new Sphere(gl, 1, 4);
+    allObjs.push(o);
+/*  var r;
+  var o;
+  for (let i = 0; i < 10; i ++) {
+    for (let j = 0; j < 10; j++) {
+      r = Math.random()*2;
+      if (r < 1) {
+        o = new PolygonalPrism(gl,
+            {
+              topRadius: (Math.random()*0.5 + 0.25),
+              bottomRadius: (Math.random()*0.5 + 0.25),
+              numSides: (Math.random()*9 + 3),
+              height: (Math.random()*0.5 + 0.75)
+            });
+      } else {
+        o = new Cone(gl,
+            {
+              radius: (Math.random()*0.25 + 0.25),
+              height: (Math.random()*0.5 + 0.75)
+            });
+      }
+      mat4.translate (o.coordFrame, o.coordFrame, vec3.fromValues(i-5, j-5, 0));
+      allObjs.push(o);
+    }
+  }*/
+/*  let obj = new PolygonalPrism(gl,
       {
         topRadius: 0.5,
         bottomRadius: 0.5,
@@ -84,7 +111,52 @@ function createObject() {
     height: 1.2
   });
   mat4.translate (cone.coordFrame, cone.coordFrame, vec3.fromValues(1, 0, 0));
-  allObjs.push(obj, cone);
+  allObjs.push(obj, cone);*/
+}
+
+function setupEventHandlers() {
+    document.addEventListener('keydown', function(event) {
+        if(event.keyCode == 37) {
+            //turn left
+            viewMat[0][0] -= 0.2;
+            //alert('Left was pressed');
+        }
+        else if(event.keyCode == 38) {
+            //move forward
+            viewMat[1][1] += 0.2;
+            //alert('Up was pressed');
+        }
+        else if(event.keyCode == 39) {
+            //turn right
+            viewMat[2][2] += 0.2;
+            //alert('Right was pressed');
+        }
+        else if(event.keyCode == 40) {
+            //move backward
+            viewMat[3][3] -= 0.2;
+            //alert('Down was pressed');
+        }
+        else if(event.keyCode == 87) {
+            //nose up
+            //transy -= 0.2;
+            alert('w was pressed');
+        }
+        else if(event.keyCode == 65) {
+            //bank left
+            //transy -= 0.2;
+            alert('a was pressed');
+        }
+        else if(event.keyCode == 83) {
+            //nose down
+            //transy -= 0.2;
+            alert('s was pressed');
+        }
+        else if(event.keyCode == 68) {
+            //bank right
+            //transy -= 0.2;
+            alert('d was pressed');
+        }
+    });
 }
 
 function resizeWindow() {
